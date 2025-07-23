@@ -16,7 +16,7 @@ export default {
 		let text = '';
 
 		// Check if sender is allowed
-		let allowList = env.allowed.address;
+		let allowList = env.allowed;
 		if (!Array.isArray(allowList)) {
 			try {
 				allowList = JSON.parse(allowList);
@@ -24,7 +24,7 @@ export default {
 				allowList = [];
 			}
 		}
-		if (!allowList.includes(from)) {
+		if (!allowList.address.includes(from)) {
 			message.setReject(`Sender not allowed: ${from}`);
 			// Sender not allowed, do not post
 			return;
