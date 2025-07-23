@@ -29,7 +29,14 @@ export default {
 		let text = '';
 
 		// Check if sender is allowed
-		const allowList = env.allowed;
+		let allowList = env.allowed.address;
+		if (!Array.isArray(allowList)) {
+			try {
+				allowList = JSON.parse(allowList);
+			} catch {
+				allowList = [];
+			}
+		}
 		if (!allowList.includes(from)) {
 			// Sender not allowed, do not post
 			return;
