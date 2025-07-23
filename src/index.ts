@@ -38,7 +38,7 @@ export default {
 			}
 		}
 		if (!allowList.includes(from)) {
-			message.setReject(`Sender not allowed: ${from}`);"
+			message.setReject(`Sender not allowed: ${from}`);
 			// Sender not allowed, do not post
 			return;
 		}
