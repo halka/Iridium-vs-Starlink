@@ -28,6 +28,13 @@ export default {
 		let googlemapsUrl = 'https://maps.google.com/?q=';
 		let text = '';
 
+		// Check if sender is allowed
+		const allowList = env.allowed;
+		if (!allowList.includes(from)) {
+			// Sender not allowed, do not post
+			return;
+		}
+
 		if (subject.includes('inReachメッセージ')) {
 			for (const line of bodyLines) {
 				const match = line.match(/Lat\s([0-9.\-]+)\sLon\s([0-9.\-]+)/);
