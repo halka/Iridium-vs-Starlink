@@ -3,9 +3,7 @@ import xApiPost from '@kworq/x-api-post';
 
 export default {
 	async email(message: any, env: any, ctx: any) {
-		const parser = new PostalMime();
-		const rawEmail = new Response(message.raw);
-		const email = await parser.parse(await rawEmail.arrayBuffer());
+		const email = await PostalMime.parse(message.raw);
 		let from = email.from.address;
 		let body = email.text ?? '';
 		let subject = email.subject ?? '';
