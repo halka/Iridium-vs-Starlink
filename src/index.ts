@@ -27,7 +27,7 @@ export default {
 
 		let text: string = bodyLines[0];
 
-		if (subject.includes(frominReachSubject)) {
+		if (subject.includes(fromInReachSubject)) {
 				for (const line of bodyLines) {
 						const match = line.match(/Lat\s([0-9.\-]+)\sLon\s([0-9.\-]+)/);
 						if (match) {
