@@ -18,11 +18,9 @@ export default {
 
 		// Check sender is allowed
 		const allowList = JSON.parse(env.allowed);
-
 		if (!allowList.address.includes(from)) {
-			message.setReject(`Sender not allowed: ${from}`);
-			// Sender not allowed, do not post
-			return -1;
+			 message.setReject(`Sender not allowed: ${from}`);
+			 return -1;
 		}
 
 		let text: string = bodyLines[0];
