@@ -13,7 +13,7 @@ export default {
 		let lat: string | null = null;
 		let lon: string | null = null;
 		let googlemapsUrl = 'https://maps.google.com/?q=';
-;
+		;
 		// Check if sender is allowed
 		const allowList = JSON.parse(env.allowed);
 
@@ -23,7 +23,7 @@ export default {
 			return 1;
 		}
 
-		let text:string = bodyLines[0];
+		let text: string = bodyLines[0];
 
 		if (subject.includes('inReachメッセージ')) {
 			for (const line of bodyLines) {
@@ -37,22 +37,23 @@ export default {
 				}
 			}
 		}
-		if (0 < text.length && text.length < 280) {  
+		if (0 < text.length && text.length < 280) {
 
-		// Tweet using x-api-post
-		const config = {
-			X_API_KEY: env.X_API_KEY || '',
-			X_API_SECRET: env.X_API_SECRET || '',
-			X_API_ACCESS_TOKEN: env.X_API_ACCESS_TOKEN || '',
-			X_API_ACCESS_TOKEN_SECRET: env.X_API_ACCESS_TOKEN_SECRET || ''
-		};
-		const xApiClient = new xApiPost(config);
-		await xApiClient.postTweetWithMedia(text).then((response) => console.log(response))
-			.catch((error: any) => console.error("Error posting tweet:", error));
-		console.log(text);
-	}else {
-		// Return 1 to indicate success
-		console.log(`Failed: ${text} ${text.length} ${from}`);
-		return 1;
-}
+			// Tweet using x-api-post
+			const config = {
+				X_API_KEY: env.X_API_KEY || '',
+				X_API_SECRET: env.X_API_SECRET || '',
+				X_API_ACCESS_TOKEN: env.X_API_ACCESS_TOKEN || '',
+				X_API_ACCESS_TOKEN_SECRET: env.X_API_ACCESS_TOKEN_SECRET || ''
+			};
+			const xApiClient = new xApiPost(config);
+			await xApiClient.postTweetWithMedia(text).then((response) => console.log(response))
+				.catch((error: any) => console.error("Error posting tweet:", error));
+			console.log(text);
+		} else {
+			// Return 1 to indicate success
+			console.log(`Failed: ${text} ${text.length} ${from}`);
+			return 1;
+		}
+	}
 }
