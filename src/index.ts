@@ -1,4 +1,4 @@
-import PostalMime from 'postal-mime';
+import * as PostalMime from 'postal-mime';
 import xApiPost from '@kworq/x-api-post';
 
 export default {
