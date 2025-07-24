@@ -55,7 +55,8 @@ export default {
 			X_API_ACCESS_TOKEN_SECRET: env.X_API_ACCESS_TOKEN_SECRET || ''
 		};
 		const xApiClient = new xApiPost(config);
-		await xApiClient.postTweetWithMedia(text);
-		// console.log(text);
+		await xApiClient.postTweetWithMedia(text).then((response) => console.log(response))
+			.catch((error: any) => console.error("Error posting tweet:", error));
+		console.log(text);
 	}
 }
