@@ -9,7 +9,7 @@ export default {
 		const from = email.from.address;
 		const body = email.text ?? '';
 		const subject = email.subject ?? '';
-		const maxPostLength: uint8 = 280;
+		const maxPostLength = 280;
 		// Check and Change
 		const fromInReachSubject = 'inReachメッセージ';
 
